@@ -1,11 +1,15 @@
-<?php include 'connect.php'; ?>
 <?php
+session_start();
+include '../core/connect.php';
+
 if ($_POST) {
     $sql = "select * from users where username='" . $_POST['username'] . "' and password='" . $_POST['password'] . "' ";
     $query = mysqli_query($conn, $sql);
     $num = mysqli_num_rows($query);
     if ($num == 1) {
-        header('location:office.php');
+        echo "<script> window.location='../dashboard/index.php'; </script>";
+        //header('location:office.php');
+        //$_SESSION['authen'] = 'success';
     } else {
         echo '<script>alert("Username หรือ Password ไม่ถูกต้อง");</script>';
         echo '<script>history.back();</script>';

@@ -1,0 +1,49 @@
+<?php
+//session_start();
+include '../core/connect.php';
+
+$query = 'select * from users';
+$data = mysqli_query($conn, $query);
+?>
+<!doctype html>
+<html lang="en">
+    <?php include '../template/head.php'; ?>
+
+    <body>
+        <?php include '../template/nav.php'; ?>
+
+        <div class="container-fluid">
+            <div class="row">
+                <?php include '../template/menu.php'; ?>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                    <h2>Users</h2>
+                    <a href="create.php" class="btn btn-primary btn-sm">Addnew</a>
+                    <div class="table-responsive" style="margin-top: 10px;">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>ID</td>
+                                <td>Username</td>
+                                <td>Password</td>
+                                <td>Action</td>
+                            </tr>
+                            <?php while ($ROW = mysqli_fetch_array($data)) : ?>
+                                <tr>
+                                    <td><?php echo $ROW['id'] ?></td>
+                                    <td><?php echo $ROW['username'] ?></td>
+                                    <td><?php echo $ROW['password'] ?></td>
+                                    <td>
+                                        <a class="btn btn-warning btn-sm" href="update.php?id=<?php echo $ROW['id'] ?>">Edit</a>
+                                        <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $ROW['id'] ?>" onclick="return confirm('คุณต้องการลบข้อมูลนี้ ใช่หรือไม่?')">Delete</a></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </table>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <?php include '../template/script.php'; ?>
+
+    </body>
+</html>
