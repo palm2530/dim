@@ -1,9 +1,9 @@
 <?php
 
-  //echo 'ดนัยณัฐ'.'<br />'. 'ซังเรือง';
+  //echo 'Name'.'<br />'. 'Surname';
 
-  /* echo 'ดนัยณัฐ'.'<br />'. 'ซังเรือง';
+  /* echo 'Name'.'<br />'. 'Surname';
 
-  echo 'ดนัยณัฐ'.'<br />'. 'ซังเรือง'; */
+  echo 'Name'.'<br />'. 'Surname'; */
 
  ?>
