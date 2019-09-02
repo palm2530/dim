@@ -22,14 +22,15 @@ $data = mysqli_query($conn, $query);
                     <div class="table-responsive" style="margin-top: 10px;">
                         <table class="table table-striped">
                             <tr>
-                                <td>ID</td>
+                                <td>#</td>
                                 <td>Title</td>
                                 <td>Status</td>
                                 <td>Action</td>
                             </tr>
+                            <?php $i = 1; ?>
                             <?php while ($ROW = mysqli_fetch_array($data)) : ?>
                                 <tr>
-                                    <td><?php echo $ROW['id'] ?></td>
+                                    <td><?php echo $i++ ?>.</td>
                                     <td><?php echo $ROW['title'] ?></td>
                                     <td><?php echo $ROW['status'] == 1 ? 'เปิด' : 'ปิด' ?></td>
                                     <td>
