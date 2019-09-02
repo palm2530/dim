@@ -4,9 +4,14 @@ include '../core/connect.php';
 
 if ($_POST) {
 
+    if ($_FILES["filUpload"]["name"] != '') { //ตรวจสอบไฟล์อัพโหลด
+        move_uploaded_file($_FILES["filUpload"]["tmp_name"], "../uploads/" . $_FILES["filUpload"]["name"]);
+    }
+
     $query = 'insert into content (
                       title,
                       detail,
+                      imagesPath,
                       status,
                       startDate,
                       endDate
@@ -14,6 +19,7 @@ if ($_POST) {
                     values (
                       "' . $_POST['title'] . '",
                       "' . $_POST['detail'] . '",
+                      "' . $_FILES["filUpload"]["name"] . '",
                       "' . $_POST['status'] . '",
                       "' . $_POST['startDate'] . '",
                       "' . $_POST['endDate'] . '"
@@ -36,7 +42,7 @@ if ($_POST) {
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                     <h2>Content</h2>
-                    <form action="?" method="post">
+                    <form action="?" method="post" enctype="multipart/form-data">
                         <table class="table table-striped">
 
                             <tr>
@@ -46,6 +52,10 @@ if ($_POST) {
                             <tr>
                                 <td>Detail</td>
                                 <td><textarea name="detail"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Upload</td>
+                                <td><input type="file" name="filUpload" class="form-control"/></td>
                             </tr>
                             <tr>
                                 <td>Status</td>

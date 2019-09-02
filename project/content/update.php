@@ -3,6 +3,16 @@
 include '../core/connect.php';
 
 if ($_POST) {
+    if ($_FILES["filUpload"]["name"] != '') { //ตรวจสอบไฟล์อัพโหลด
+        move_uploaded_file($_FILES["filUpload"]["tmp_name"], "../uploads/" . $_FILES["filUpload"]["name"]);
+        $query = 'update content set
+                    imagesPath = "' . $_FILES["filUpload"]["name"] . '"
+                  where
+                    id = "' . $_POST['id'] . '"
+                     ';
+        $data = mysqli_query($conn, $query);
+    }
+
     $query = 'update content set
                     title = "' . $_POST['title'] . '" ,
                     detail = "' . $_POST['detail'] . '",
@@ -35,7 +45,7 @@ if ($_POST) {
 
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                     <h2>Content</h2>
-                    <form action="?" method="post">
+                    <form action="?" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?php echo $ROW['id'] ?>">
                         <table class="table table-striped">
                             <tr>
@@ -45,6 +55,13 @@ if ($_POST) {
                             <tr>
                                 <td>Detail</td>
                                 <td><textarea name="detail"><?php echo $ROW['detail'] ?></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>Upload</td>
+                                <td>
+                                    <p><a href="<?php echo '../uploads/' . $ROW['imagesPath'] ?>" target="_blank"><?php echo $ROW['imagesPath'] ?></a></p>
+                                    <input type="file" name="filUpload" class="form-control"/>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Status</td>
