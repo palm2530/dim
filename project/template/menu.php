@@ -19,6 +19,12 @@
                     Content
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../slide/read.php">
+                    <span data-feather="shopping-cart"></span>
+                    Slides
+                </a>
+            </li>
         </ul>
 
     </div>
