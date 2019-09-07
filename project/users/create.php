@@ -6,11 +6,13 @@ if ($_POST) {
 
     $query = 'insert into users (
                       username,
-                      password
+                      password,
+                      email
                     )
                     values (
                       "' . $_POST['username'] . '",
-                      "' . $_POST['password'] . '"
+                      "' . $_POST['password'] . '",
+                      "' . $_POST['email'] . '"
                     )';
     $data = mysqli_query($conn, $query);
     echo "<script> alert('Success'); </script>";
@@ -41,6 +43,12 @@ if ($_POST) {
                                 <td>Password</td>
                                 <td><input type="text" name="password" class="form-control"/></td>
                             </tr>
+
+                            <tr>
+                                <td>Email</td>
+                                <td><input type="text" name="email" class="form-control"/></td>
+                            </tr>
+
                         </table>
                         <input type="submit" class="btn btn-primary btn-sm" value="Submit" />
                         <a class="btn btn-danger btn-sm" href="read.php">Cancel</a>

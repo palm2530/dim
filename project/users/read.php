@@ -25,6 +25,7 @@ $data = mysqli_query($conn, $query);
                                 <td>#</td>
                                 <td>Username</td>
                                 <td>Password</td>
+                                <td>Email</td>
                                 <td>Action</td>
                             </tr>
                             <?php $i = 1; ?>
@@ -33,6 +34,7 @@ $data = mysqli_query($conn, $query);
                                     <td><?php echo $i++ ?>.</td>
                                     <td><?php echo $ROW['username'] ?></td>
                                     <td><?php echo $ROW['password'] ?></td>
+                                    <td><?php echo $ROW['email'] ?></td>
                                     <td>
                                         <a class="btn btn-warning btn-sm" href="update.php?id=<?php echo $ROW['id'] ?>">Edit</a>
                                         <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $ROW['id'] ?>" onclick="return confirm('คุณต้องการลบข้อมูลนี้ ใช่หรือไม่?')">Delete</a></td>

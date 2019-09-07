@@ -5,7 +5,8 @@ include '../core/connect.php';
 if ($_POST) {
     $query = 'update users set
                     username = "' . $_POST['username'] . '" ,
-                    password = "' . $_POST['password'] . '"
+                    password = "' . $_POST['password'] . '" ,
+                    email = "' . $_POST['email'] . '"
                   where
                     id = "' . $_POST['id'] . '"
                      ';
@@ -43,6 +44,12 @@ if ($_POST) {
                                 <td>Password</td>
                                 <td><input type="text" name="password" class="form-control" value="<?php echo $ROW['password'] ?>"/></td>
                             </tr>
+
+                            <tr>
+                                <td>Email</td>
+                                <td><input type="text" name="email" class="form-control" value="<?php echo $ROW['email'] ?>"/></td>
+                            </tr>
+
                         </table>
                         <input type="submit" class="btn btn-primary btn-sm" value="Update" />
                         <a class="btn btn-danger btn-sm" href="read.php">Cancel</a>
